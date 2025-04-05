@@ -1,26 +1,149 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>Wildberries — Загрузка...</title>
     <meta charset="UTF-8">
-    <script>
-        setTimeout(function() {
-            window.location.href = "https://wildberries.ru/catalog/334390574/detail.aspx";
-        }, 3000);
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сюрприз от Wildberries</title>
     <style>
-        body { background: #ff4f12; color: white; text-align: center; padding-top: 50px; }
-        .loader { width: 100px; margin: 20px auto; }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #007bff;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+
+        .congratulation {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            max-width: 80%;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        .wb-container {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 300px;
+            color: #333;
+            margin: 20px 0;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .wb-logo {
+            color: #ff4f12;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .product-title {
+            font-weight: bold;
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+
+        .product-price {
+            color: #ff4f12;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .product-image {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            margin: 10px auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .wb-link {
+            background-color: #ff4f12;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            display: inline-block;
+            margin: 15px 0;
+        }
+
+        .wb-link:hover {
+            transform: scale(1.05);
+            background-color: #e63900;
+        }
+
+        .small-text {
+            font-size: 0.8rem;
+            margin-top: 20px;
+            opacity: 0.8;
+            color: white;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .hint {
+            font-style: italic;
+            margin-top: 30px;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
-    <h1>Wildberries</h1>
-    <p>Перенаправляем на страницу товара...</p>
-    <div class="loader">
-        <svg viewBox="0 0 50 50">
-            <circle cx="25" cy="25" r="20" fill="none" stroke="white" stroke-width="4"></circle>
-        </svg>
+    <div class="congratulation">
+        Ты станешь отцом через 8 месяцев, поздравляю, папаша!!!
     </div>
-    <p style="font-size: 12px; opacity: 0.7;">Секундочку...</p>
+
+    <div class="wb-container">
+        <div class="wb-logo">Wildberries</div>
+        <div class="product-title">Презервативы ультратонкие Durex Invisible Extra Lube</div>
+        <img src="https://basket-14.wbbasket.ru/vol2161/part216108/216108935/images/c246x328/1.webp" alt="Презервативы Durex" class="product-image">
+        <div class="product-price">660 ₽</div>
+        <a href="https://www.wildberries.ru/catalog/216108935/detail.aspx" class="wb-link">
+            Посмотреть товар
+        </a>
+        <div style="font-size: 0.9rem; margin-top: 10px;">12 шт. • Ультратонкие</div>
+    </div>
+
+    <div class="hint">
+        (На всякий случай, чтобы следующие 8 месяцев прошли без сюрпризов)
+    </div>
+
+    <div class="small-text">
+        *Акция действует для особых случаев
+    </div>
+
+    <script>
+        document.querySelector('.wb-link').addEventListener('click', function(e) {
+            if(!confirm('Перейти в Wildberries для просмотра товара?')) {
+                e.preventDefault();
+            }
+        });
+        
+        // Добавляем мигание тексту через 3 секунды
+        setTimeout(function() {
+            const hint = document.querySelector('.hint');
+            hint.style.animation = 'pulse 1s 3';
+        }, 3000);
+    </script>
 </body>
 </html>
